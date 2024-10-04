@@ -12,6 +12,7 @@ def operation_decider(func):
             raise ValueError("Unsupported operation")
     return wrapper
 
+
 @operation_decider
 def calc(first, second, operation):
     if operation == '+':

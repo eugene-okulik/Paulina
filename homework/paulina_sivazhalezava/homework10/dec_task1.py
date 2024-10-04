@@ -10,5 +10,5 @@ def say_finish(func):
 def example(text):
     print(text)
 
-    
+
 example('print me')
