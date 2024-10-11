@@ -9,12 +9,12 @@ class Flowers:
         self.stem_length = stem_length
 
     def __lt__(self, other):
-        return ((self.price, self.blooming_time, self.stem_length) <
-                (other.price, other.blooming_time, other.stem_length))
+        return ((self.price, self.blooming_time, self.stem_length)
+                < (other.price, other.blooming_time, other.stem_length))
 
     def __gt__(self, other):
-        return ((self.price, self.blooming_time, self.stem_length) >
-                (other.price, other.blooming_time, other.stem_length))
+        return ((self.price, self.blooming_time, self.stem_length)
+                > (other.price, other.blooming_time, other.stem_length))
 
     def __str__(self):
         if self.freshness == "good":
