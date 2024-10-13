@@ -78,12 +78,39 @@ class Bouquet:
             print("Цветов такого цвета нет в букете.")
             return None
 
+    def sort_by_parameter(self, parameter):
+        valid_parameters = ['price', 'blooming_time', 'color', 'stem_length']
+        if parameter not in valid_parameters:
+            print("Invalid sorting parameter!")
+            return
+        sorted_flowers = []
+
+        if parameter == 'price':
+            sorted_flowers = sorted(self.flowers_in_bouquet, key=lambda x: x.price)
+        elif parameter == 'blooming_time':
+            sorted_flowers = sorted(self.flowers_in_bouquet, key=lambda x: x.blooming_time)
+        elif parameter == 'color':
+            sorted_flowers = sorted(self.flowers_in_bouquet, key=lambda x: x.color)
+        elif parameter == 'stem_length':
+            sorted_flowers = sorted(self.flowers_in_bouquet, key=lambda x: x.stem_length)
+
+        for flower in sorted_flowers:
+            print(f"{flower.name}: {parameter} = {getattr(flower, parameter)}")
+
+    def sort_by_freshness(self):
+        freshness_order = {'good': 1, 'medium': 2, 'low': 3}
+        sorted_flowers = sorted(self.flowers_in_bouquet, key=lambda x: freshness_order[x.freshness])
+        for flower in sorted_flowers:
+            print(f"{flower.name}: свежесть: {flower.freshness}")
+
 
 my_bouquet = Bouquet()
 my_bouquet.add_flower(dianthus_chinese)
 my_bouquet.add_flower(dianthus_wild)
 my_bouquet.add_flower(lotus)
 my_bouquet.add_flower(lavender_french)
+my_bouquet.sort_by_parameter('blooming_time')
+my_bouquet.sort_by_freshness()
 
 print(f"Стоимость букета: {my_bouquet.bouquet_price()} USD")
 print(f"Время увядания: {my_bouquet.bouquet_blooms()} дней")
