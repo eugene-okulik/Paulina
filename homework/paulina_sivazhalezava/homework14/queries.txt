@@ -1,0 +1,47 @@
+INSERT INTO students (name, second_name, group_id) values ('Kot', 'Chorny', 278)
+
+SELECT id FROM students WHERE name = 'Kot' AND second_name = 'Chorny'
+
+INSERT INTO books (title, taken_by_student_id) values ('Ohota i rybalka', 3393)
+
+INSERT INTO books (title, taken_by_student_id) values ('Podvyznye igry', 3393)
+
+INSERT INTO books (title, taken_by_student_id) values ('Kak ponyat cheloveka', 3393)
+
+INSERT INTO groups (title, start_date, end_date) VALUES ('Koty', 'Aug 2023', 'Sep 2040')
+
+UPDATE students set group_id = 2092 WHERE id = 3393
+
+INSERT INTO subjets (title) values ('Ohota na rybov')
+
+INSERT INTO subjets (title) values ('Ohota na myshei')
+
+INSERT INTO lessons (title, subject_id) values ('Vidy myshei', 2959)
+
+INSERT INTO lessons (title, subject_id) values ('Kak poymat mysh', 2959)
+
+INSERT INTO lessons (title, subject_id) values ('Vidy rybov', 2960)
+
+INSERT INTO lessons (title, subject_id) values ('Poymat soma', 2960)
+
+INSERT INTO marks (value, lesson_id, student_id) values ('Kharacho', 5997, 3393)
+
+INSERT INTO marks (value, lesson_id, student_id) values ('Otlichno', 5998, 3393)
+
+INSERT INTO marks (value, lesson_id, student_id) values ('Kharacho', 5999, 3393)
+
+INSERT INTO marks (value, lesson_id, student_id) values ('Prevoshodno', 6000, 3393)
+
+SELECT * FROM marks WHERE student_id = 3393
+
+SELECT * FROM books WHERE taken_by_student_id = 3393
+
+SELECT *
+FROM students
+LEFT JOIN books ON students.id = books.taken_by_student_id
+LEFT JOIN `groups` ON students.group_id = `groups`.id 
+LEFT JOIN marks ON students.id = marks.student_id 
+LEFT JOIN lessons ON marks.lesson_id = lessons.id 
+LEFT JOIN subjets ON lessons.subject_id = subjets.id 
+WHERE students.id = 3393
+
