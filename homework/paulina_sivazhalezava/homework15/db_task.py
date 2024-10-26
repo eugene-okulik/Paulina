@@ -41,7 +41,7 @@ for title, subject_id in lessons:
     cursor.execute("INSERT INTO lessons (title, subject_id) values (%s, %s)", (title, subject_id))
     lesson_id = cursor.lastrowid
     cursor.execute("INSERT INTO marks (value, lesson_id, student_id) values ('Kharacho', %s, %s)",
-                    (lesson_id, student_id))
+                   (lesson_id, student_id))
 
 cursor.execute("SELECT * FROM marks WHERE student_id = %s", (student_id,))
 marks = cursor.fetchall()
@@ -52,7 +52,7 @@ books = cursor.fetchall()
 print("Books:", books)
 
 cursor.execute("""
-    SELECT * FROM students 
+    SELECT * FROM students
     LEFT JOIN books ON students.id = books.taken_by_student_id
     LEFT JOIN `groups` ON students.group_id = `groups`.id
     LEFT JOIN marks ON students.id = marks.student_id
