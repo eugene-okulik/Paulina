@@ -21,15 +21,15 @@ def cleanup(object_id):
 
 def test_post_an_object_positive():
     body = {
-            "data": {
-                "color": "Grey",
-                "birthdate": "2023-01-01",
-                "name": "Kot",
-                "sex": "M",
-                "username": "KotSuslik"
-            },
-            "name": "Kot Sery"
-        }
+        "data": {
+            "color": "Grey",
+            "birthdate": "2023-01-01",
+            "name": "Kot",
+            "sex": "M",
+            "username": "KotSuslik"
+        },
+        "name": "Kot Sery"
+    }
 
     headers = {'Content-Type': 'application/json'}
     response = requests.post(
@@ -51,8 +51,8 @@ def test_post_an_object_positive():
 
 def test_post_an_object_negative():
     body_missing_data = {
-            "name": "Kot Sery"
-        }
+        "name": "Kot Sery"
+    }
 
     headers = {'Content-Type': 'application/json'}
     response_missing_data = requests.post(
@@ -113,16 +113,15 @@ def test_post_an_object_negative():
 
 def new_object():
     body = {
-
-            "data": {
-                "color": "White",
-                "birthdate": "2023-01-01",
-                "name": "Kot",
-                "sex": "M",
-                "username": "KotSuslik"
-            },
-            "name": "Kot Bely"
-        }
+        "data": {
+            "color": "White",
+            "birthdate": "2023-01-01",
+            "name": "Kot",
+            "sex": "M",
+            "username": "KotSuslik"
+        },
+        "name": "Kot Bely"
+    }
 
     headers = {'Content-Type': 'application/json'}
     response = requests.post(
@@ -137,15 +136,15 @@ def test_update_an_object_positive():
     created_object = new_object()
     object_id = created_object['id']
     update_body = {
-            "data": {
-                "birthdate": "2024-01-01",
-                "color": "GreyUpdated",
-                "name": "KotUpdated",
-                "sex": "MUpdated",
-                "username": "KotSuslikUpdated"
-            },
-            "name": "KotUpdated2"
-        }
+        "data": {
+            "birthdate": "2024-01-01",
+            "color": "GreyUpdated",
+            "name": "KotUpdated",
+            "sex": "MUpdated",
+            "username": "KotSuslikUpdated"
+        },
+        "name": "KotUpdated2"
+    }
     headers = {'Content-Type': 'application/json'}
     requests.put(f'http://167.172.172.115:52353/object/{object_id}',
                  json=update_body, headers=headers).json()
@@ -164,8 +163,8 @@ def test_update_an_object_negative():
     created_object = new_object()
     object_id = created_object['id']
     update_body_missing_data = {
-            "name": "KotUpdated3"
-        }
+        "name": "KotUpdated3"
+    }
     headers = {'Content-Type': 'application/json'}
     response_missing_data = requests.put(f'http://167.172.172.115:52353/object/{object_id}',
                                          json=update_body_missing_data, headers=headers)
@@ -212,14 +211,14 @@ def test_patch_an_object_positive():
     created_object = new_object()
     object_id = created_object['id']
     update_partial_body_data = {
-            "data": {
-                "birthdate": "2027-01-01",
-                "color": "WhitePatched",
-                "name": "KotPatched",
-                "sex": "MPatched",
-                "username": "KotBelyPatched"
-            }
+        "data": {
+            "birthdate": "2027-01-01",
+            "color": "WhitePatched",
+            "name": "KotPatched",
+            "sex": "MPatched",
+            "username": "KotBelyPatched"
         }
+    }
     headers = {'Content-Type': 'application/json'}
     requests.patch(f'http://167.172.172.115:52353/object/{object_id}',
                    json=update_partial_body_data, headers=headers).json()
