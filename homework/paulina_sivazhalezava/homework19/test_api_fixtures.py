@@ -118,15 +118,15 @@ def test_post_an_object_negative(test_messages, before_after, negative_bodies):
 def test_update_an_object_positive(test_messages, before_after, new_object):
     object_id = new_object['id']
     update_body = {
-            "data": {
-                "birthdate": "2024-01-01",
-                "color": "GreyUpdated",
-                "name": "KotUpdated",
-                "sex": "MUpdated",
-                "username": "KotSuslikUpdated"
-            },
-            "name": "KotUpdated2"
-        }
+        "data": {
+            "birthdate": "2024-01-01",
+            "color": "GreyUpdated",
+            "name": "KotUpdated",
+            "sex": "MUpdated",
+            "username": "KotSuslikUpdated"
+        },
+        "name": "KotUpdated2"
+    }
     headers = {'Content-Type': 'application/json'}
     requests.put(f'http://167.172.172.115:52353/object/{object_id}',
                  json=update_body, headers=headers).json()
@@ -140,7 +140,8 @@ def test_update_an_object_positive(test_messages, before_after, new_object):
     assert response['data']['username'] == update_body['data']['username'], "Username does not match"
 
 
-@pytest.mark.parametrize('negative_update_bodies', [{
+@pytest.mark.parametrize('negative_update_bodies', [
+    {
         "data": {
             "birthdate": "2026-01-01",
             "color": "GreyUpdated3",
@@ -148,7 +149,8 @@ def test_update_an_object_positive(test_messages, before_after, new_object):
             "sex": "MUpdated3",
             "username": "KotSuslikUpdated3"
         }
-    }, {
+    },
+    {
         "data": {
             "birthdate": "2026-01-01",
             "color": "GreyUpdated3",
@@ -157,10 +159,12 @@ def test_update_an_object_positive(test_messages, before_after, new_object):
             "username": "KotSuslikUpdated3"
         },
         "name": []
-    }, {
+    },
+    {
         "data": 1,
         "name": "name"
-    }])
+    }
+])
 def test_update_an_object_negative(test_messages, before_after, new_object, negative_update_bodies):
     object_id = new_object['id']
     headers = {'Content-Type': 'application/json'}
@@ -172,14 +176,14 @@ def test_update_an_object_negative(test_messages, before_after, new_object, nega
 def test_patch_an_object_positive(test_messages, before_after, new_object):
     object_id = new_object['id']
     update_partial_body_data = {
-            "data": {
-                "birthdate": "2027-01-01",
-                "color": "WhitePatched",
-                "name": "KotPatched",
-                "sex": "MPatched",
-                "username": "KotBelyPatched"
-            }
+        "data": {
+            "birthdate": "2027-01-01",
+            "color": "WhitePatched",
+            "name": "KotPatched",
+            "sex": "MPatched",
+            "username": "KotBelyPatched"
         }
+    }
     headers = {'Content-Type': 'application/json'}
     requests.patch(f'http://167.172.172.115:52353/object/{object_id}',
                    json=update_partial_body_data, headers=headers).json()
@@ -192,11 +196,14 @@ def test_patch_an_object_positive(test_messages, before_after, new_object):
     assert response['data']['username'] == update_partial_body_data['data']['username'], "Username does not match"
 
 
-@pytest.mark.parametrize('negative_patch_bodies', [{
+@pytest.mark.parametrize('negative_patch_bodies', [
+    {
         "name": {}
-    }, {
+    },
+    {
         "data": 1
-    }])
+    }
+])
 def test_patch_an_object_negative(test_messages, before_after, new_object, negative_patch_bodies):
     object_id = new_object['id']
     headers = {'Content-Type': 'application/json'}
