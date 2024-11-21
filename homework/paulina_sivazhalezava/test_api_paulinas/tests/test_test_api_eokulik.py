@@ -136,12 +136,30 @@ def test_update_one_object_positive(create_object_endpoint, update_object_endpoi
 
 
 TEST_DATA_UPDATE_NEGATIVE = [
-        {"name": "Kot Polosaty"},
-        {"data": {"color": "Grey", "birthdate": "2023-01-02", "name": "Kot", "sex": "F",
-                  "username": "KotSusLik"}, "name": []},
-        {"name": 1234, "data": {"color": "Yellow", "birthdate": "2023-01-03", "name": "Kot", "sex": "M",
-                                "username": "KotYello"}}
-    ]
+    {
+        "name": "Kot Polosaty"
+    },
+    {
+        "data": {
+            "color": "Grey",
+            "birthdate": "2023-01-02",
+            "name": "Kot",
+            "sex": "F",
+            "username": "KotSusLik"
+        },
+        "name": []
+    },
+    {
+        "name": 1234,
+        "data": {
+            "color": "Yellow",
+            "birthdate": "2023-01-03",
+            "name": "Kot",
+            "sex": "M",
+            "username": "KotYello"
+        }
+    }
+]
 
 
 @allure.feature('Manipulate object')
@@ -170,7 +188,6 @@ def test_update_one_object_negative(create_object_endpoint, update_object_endpoi
 @allure.title('Test partial update (patch) of an object with valid data')
 def test_patch_one_object_positive(create_object_endpoint, patch_object_endpoint, get_object_endpoint, cleanup_object):
     create_object_endpoint.create_new_object(payload={
-
         "data": {
             "color": "Brown",
             "birthdate": "2020-01-01",
@@ -181,14 +198,14 @@ def test_patch_one_object_positive(create_object_endpoint, patch_object_endpoint
         "name": "Kot Tom"
     })
     patch_object_endpoint.patch_new_object(object_id=create_object_endpoint.object_id, payload={
-            "data": {
-                "birthdate": "2027-01-01",
-                "color": "TomPatched",
-                "name": "KotPatched",
-                "sex": "MPatched",
-                "username": "KotTomPatched"
-            }
-        })
+        "data": {
+            "birthdate": "2027-01-01",
+            "color": "TomPatched",
+            "name": "KotPatched",
+            "sex": "MPatched",
+            "username": "KotTomPatched"
+        }
+    })
     get_object_endpoint.get_an_object(object_id=patch_object_endpoint.object_id)
     get_object_endpoint.check_that_status_code_is_200()
     get_object_endpoint.check_that_id_is_correct()
@@ -203,10 +220,11 @@ def test_patch_one_object_positive(create_object_endpoint, patch_object_endpoint
 TEST_DATA_PATCH_NEGATIVE = [
     {
         "name": {}
-    }, {
+    },
+    {
         "data": 1
     }
-    ]
+]
 
 
 @allure.feature('Manipulate object')
@@ -215,7 +233,6 @@ TEST_DATA_PATCH_NEGATIVE = [
 @pytest.mark.parametrize('data', TEST_DATA_PATCH_NEGATIVE)
 def test_patch_one_object_negative(create_object_endpoint, patch_object_endpoint, data, cleanup_object):
     create_object_endpoint.create_new_object(payload={
-
         "data": {
             "color": "Blue",
             "birthdate": "2019-01-01",
