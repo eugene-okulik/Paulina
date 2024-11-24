@@ -39,3 +39,20 @@ def cleanup_object(delete_object_endpoint):
 
     for object_id in created_object_ids:
         delete_object_endpoint.delete_object(object_id)
+
+
+@pytest.fixture()
+def create_test_object(create_object_endpoint, delete_object_endpoint):
+    payload = {
+        "data": {
+            "color": "Red",
+            "birthdate": "2022-01-01",
+            "name": "Bonifacy",
+            "sex": "M",
+            "username": "KotBonifacyStary"
+        },
+        "name": "Kot Bonifacy"
+    }
+    create_object_endpoint.create_new_object(payload=payload)
+    yield create_object_endpoint.object_id
+    delete_object_endpoint.delete_object(object_id=create_object_endpoint.object_id)

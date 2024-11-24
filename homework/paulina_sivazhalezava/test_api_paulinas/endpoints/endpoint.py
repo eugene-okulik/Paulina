@@ -27,29 +27,29 @@ class Endpoint:
         assert self.response.status_code == 404, 'Status code is incorrect for not present data'
 
     @allure.step("Verify response 'id' is correct")
-    def check_that_id_is_correct(self):
-        assert self.object_id == self.json['id'], 'Id is incorrect'
+    def check_that_id_is_correct(self, expected_id):
+        assert self.object_id == expected_id, 'Id is incorrect'
 
     @allure.step("Verify response 'name' is correct")
-    def check_that_name_is_correct(self):
-        assert self.object_name == self.json['name'], 'Name is incorrect'
+    def check_that_name_is_correct(self, expected_name):
+        assert self.object_name == expected_name, 'Name is incorrect'
 
     @allure.step("Verify response 'color' is correct")
-    def check_that_color_is_correct(self):
-        assert self.object_color == self.json['data']['color'], 'Color is incorrect'
+    def check_that_color_is_correct(self, expected_color):
+        assert self.object_color == expected_color, 'Color is incorrect'
 
     @allure.step("Verify response 'birthdate' is correct")
-    def check_that_birthdate_is_correct(self):
-        assert self.object_birthdate == self.json['data']['birthdate'], 'Birth date is incorrect'
+    def check_that_birthdate_is_correct(self, expected_birthdate):
+        assert self.object_birthdate == expected_birthdate, 'Birth date is incorrect'
 
     @allure.step("Verify response 'name' in 'data' is correct")
-    def check_that_name_in_data_is_correct(self):
-        assert self.object_name_in_data == self.json['data']['name'], 'Name in data is incorrect'
+    def check_that_name_in_data_is_correct(self, expected_name_in_data):
+        assert self.object_name_in_data == expected_name_in_data, 'Name in data is incorrect'
 
     @allure.step("Verify response 'sex' is correct")
-    def check_that_sex_is_correct(self):
-        assert self.object_sex == self.json['data']['sex'], 'Sex is incorrect'
+    def check_that_sex_is_correct(self, expected_sex):
+        assert self.object_sex == expected_sex, 'Sex is incorrect'
 
     @allure.step("Verify response 'username' is correct")
-    def check_that_username_is_correct(self):
-        assert self.object_username == self.json['data']['username'], 'Username is incorrect'
+    def check_that_username_is_correct(self, expected_username):
+        assert self.object_username == expected_username, 'Username is incorrect'
