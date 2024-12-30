@@ -4,11 +4,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
 
+
 @pytest.fixture()
 def driver():
     chrome_driver = webdriver.Chrome()
     chrome_driver.set_window_size(1020, 1080)
     yield chrome_driver
+
 
 def test_language(driver):
     driver.get('https://www.qa-practice.com/elements/select/single_select')
@@ -21,6 +23,7 @@ def test_language(driver):
     submit_button.click()
     displayed_text = driver.find_element(By.ID, 'result-text').text
     assert option_text == displayed_text
+
 
 def test_button(driver):
     driver.get('https://the-internet.herokuapp.com/dynamic_loading/2')

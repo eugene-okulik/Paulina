@@ -5,11 +5,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
 
+
 @pytest.fixture()
 def driver():
     chrome_driver = webdriver.Chrome()
     chrome_driver.set_window_size(420, 900)
     yield chrome_driver
+
 
 def test_text_input(driver):
     input_data = 'mistercat'
@@ -18,6 +20,7 @@ def test_text_input(driver):
     text_string.send_keys(input_data)
     text_string.send_keys(Keys.ENTER)
     print(driver.find_element(By.ID, "result-text").text)
+
 
 def test_filling_form(driver):
     driver.get('https://demoqa.com/automation-practice-form')
@@ -55,12 +58,12 @@ def test_filling_form(driver):
     year.click()
     date = driver.find_element(By.XPATH, '//div[@aria-label="Choose Sunday, November 5th, 2000"]')
     date.click()
-    subjects = driver.find_element(By.ID,
-                                    "subjectsInput")
+    subjects = driver.find_element(By.ID, "subjectsInput")
     subjects.send_keys('Chemistry')
     subjects.send_keys(Keys.ENTER)
     driver.execute_script("window.scrollTo(400, 600)")
-    hobby = driver.find_element(By.XPATH, "//input[@id='hobbies-checkbox-1']/following::label[@for='hobbies-checkbox-1']")
+    hobby = driver.find_element(By.XPATH,
+                                "//input[@id='hobbies-checkbox-1']/following::label[@for='hobbies-checkbox-1']")
     hobby.click()
     address = driver.find_element(By.ID, 'currentAddress')
     address.send_keys('345 Baker street')
