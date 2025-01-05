@@ -50,6 +50,7 @@ def test_phones(driver):
     print(fetch_text)
     assert fetch_text == 'Samsung galaxy s6'
 
+
 def test_bags(driver):
     driver.get('https://magento.softwaretestingboard.com/gear/bags.html')
     bag = driver.find_element(By.XPATH,
