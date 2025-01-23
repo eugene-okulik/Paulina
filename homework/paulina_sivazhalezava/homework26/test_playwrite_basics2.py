@@ -11,7 +11,7 @@ def test_alert(page: Page):
     click_button = page.locator("//*[@class='a-button']")
     click_button.click()
     result_text = page.locator("[id = 'result-text']")
-    expect (result_text).to_have_text('Ok')
+    expect(result_text).to_have_text('Ok')
 
 
 def test_tab(page: Page, context: BrowserContext):
@@ -25,8 +25,9 @@ def test_tab(page: Page, context: BrowserContext):
     new_page.close()
     expect(click_button).to_be_enabled()
 
+
 def test_color(page: Page):
     page.goto('https://demoqa.com/dynamic-properties')
     color_change_button = page.get_by_text('Color Change')
-    expect (color_change_button).to_have_css("color", "rgb(220, 53, 69)")
+    expect(color_change_button).to_have_css("color", "rgb(220, 53, 69)")
     color_change_button.click()
