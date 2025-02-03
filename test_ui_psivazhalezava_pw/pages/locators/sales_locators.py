@@ -7,4 +7,3 @@ class SalesLocators:
     search_field_loc = '#search'
     page_title_after_search_loc = '[data-ui-id="page-title-wrapper"]'
     error_loc = "//div[@class='message notice']/child::div"
-
