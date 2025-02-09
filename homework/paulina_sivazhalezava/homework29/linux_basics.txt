@@ -1,0 +1,20 @@
+e  ^E  j  ^N  CR  *  Forward  one line   (or N lines).
+f  ^F  ^V  SPACE  *  Forward  one window (or N lines).
+y  ^Y  k  ^K  ^P  *  Backward one line   (or N lines).
+/pattern          *  Search forward for (N-th) matching line.
+?pattern          *  Search backward for (N-th) matching line.
+n                 *  Repeat previous search (for N-th occurrence).
+N                 *  Repeat previous search in reverse direction.
+g  <  ESC-<       *  Go to first line in file (or line N).
+G  >  ESC->       *  Go to last line in file (or line N).
+
+
+ /dev/null - c (character special (1/3))
+ /dev/zero - c (character special (1/5))
+ /dev/sda - -b (block special) (/dev/vda in my case)
+ /dev/tty -c (character special (5/0))
+ /root -d (directory)
+ /etc/passwd - ASCII text
+ /proc/mounts -l (symbolic link to self/mounts)
+ /bin/ls - 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked
+ /bin/zcat - POSIX shell script, ASCII text executable
