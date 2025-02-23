@@ -19,6 +19,7 @@ def addition(a, b):
     addition_result = a + b
     print(addition_result)
 
+
 addition(1, 2)
 
 
@@ -29,6 +30,7 @@ def find_occurrence(text, letter):
     else:
         print(f'letter {letter} is not in {text}')
 
+
 find_occurrence('some text', 'e')
 
 
@@ -36,5 +38,6 @@ find_occurrence('some text', 'e')
 def get_page():
     page = requests.get('https://envirocenter.org/which-bottles-cans-have-deposits/')
     print(page.status_code)
+
 
 get_page()
