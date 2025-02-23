@@ -13,6 +13,7 @@ def decorator(func):
         print(f'function execution time: {result:.9f}')
     return wrapper
 
+
 @decorator
 def addition(a, b):
     addition_result = a + b
@@ -20,14 +21,16 @@ def addition(a, b):
 
 addition(1, 2)
 
-@decorator
-def find_ocurrence(text, letter):
-        if letter in text:
-            print(f'letter {letter} is in {text}')
-        else:
-            print(f'letter {letter} is not in {text}')
 
-find_ocurrence('some text', 'e')
+@decorator
+def find_occurrence(text, letter):
+    if letter in text:
+        print(f'letter {letter} is in {text}')
+    else:
+        print(f'letter {letter} is not in {text}')
+
+find_occurrence('some text', 'e')
+
 
 @decorator
 def get_page():
